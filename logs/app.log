@@ -1,0 +1,2 @@
+{"timestamp":"2026-04-24 11:37:54","level":"ERROR","message":"PHP Error","context":{"severity":2,"message":"Undefined array key \"title\"","file":"\/app\/src\/Services\/CustomerService.php","line":48}}
+{"timestamp":"2026-04-24 11:37:54","level":"ERROR","message":"Unhandled Exception","context":{"message":"Undefined array key \"title\"","file":"\/app\/src\/Services\/CustomerService.php","line":48}}

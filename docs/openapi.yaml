@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: Task API
+  version: 1.0.0
+
+paths:
+  /customers:
+    get:
+      summary: Get all customers
+      responses:
+        "200":
+          description: OK
+
+    post:
+      summary: Create customer
+      requestBody:
+        required: true
+      responses:
+        "201":
+          description: Created
+
+  /customers/{id}:
+    get:
+      summary: Get customer by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+
+    put:
+      summary: Update customer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+
+    delete:
+      summary: Delete customer
