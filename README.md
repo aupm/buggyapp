@@ -16,6 +16,10 @@ POST /customers
 
 GET /customers/{id}
 
+POST /orders
+
+GET /orders/{id}
+
 ## Try it out
 
 curl -X POST http://localhost:8000/customers   -H "Content-Type: application/json"   -d '{"first_name":"Petar", "last_name":"Petrovic"}'

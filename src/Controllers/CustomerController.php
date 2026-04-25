@@ -1,6 +1,6 @@
 <?php
 
-class CustomerController
+class CustomerController extends AbstractController
 {
     private CustomerService $service;
 
@@ -65,27 +65,4 @@ class CustomerController
 //
 //        $this->respond(null, 204);
 //    }
-
-    private function getJsonInput(): array
-    {
-        return json_decode(file_get_contents('php://input'), true) ?? [];
-    }
-
-    private function respond($data, int $status = 200): void
-    {
-        http_response_code($status);
-        echo json_encode([
-            'data' => $data,
-            'error' => null
-        ]);
-    }
-
-    private function error(string $message, int $status): void
-    {
-        http_response_code($status);
-        echo json_encode([
-            'data' => null,
-            'error' => $message
-        ]);
-    }
 }

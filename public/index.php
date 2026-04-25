@@ -1,8 +1,11 @@
 <?php
 
 require_once __DIR__ . '/../src/Router.php';
+require_once __DIR__ . '/../src/Controllers/AbstractController.php';
 require_once __DIR__ . '/../src/Controllers/CustomerController.php';
 require_once __DIR__ . '/../src/Services/CustomerService.php';
+require_once __DIR__ . '/../src/Controllers/OrderController.php';
+require_once __DIR__ . '/../src/Services/OrderService.php';
 require_once __DIR__ . '/../src/Storage/JsonStorage.php';
 require_once __DIR__ . '/../src/Logger.php';
 

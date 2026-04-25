@@ -7,11 +7,6 @@ class Router
         $uri = parse_url($uri, PHP_URL_PATH);
 
         // /customers
-        if ($uri === '/customers' && $method === 'GET') {
-            (new CustomerController())->index();
-            return;
-        }
-
         if ($uri === '/customers' && $method === 'POST') {
             (new CustomerController())->store();
             return;
@@ -27,14 +22,22 @@ class Router
                 $controller->show($id);
                 return;
             }
+        }
 
-            if ($method === 'PUT') {
-                $controller->update($id);
-                return;
-            }
+        // /orders
+        if ($uri === '/orders' && $method === 'POST') {
+            (new OrderController())->store();
+            return;
+        }
 
-            if ($method === 'DELETE') {
-                $controller->delete($id);
+        // /customers/{id}
+        if (preg_match('#^/orders/(\d+)$#', $uri, $matches)) {
+            $id = (int)$matches[1];
+
+            $controller = new OrderController();
+
+            if ($method === 'GET') {
+                $controller->show($id);
                 return;
             }
         }

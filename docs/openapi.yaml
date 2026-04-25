@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Customer API
+  title: Buggy API
   version: 1.0.0
 
 paths:
@@ -9,6 +9,20 @@ paths:
       summary: Create customer
       requestBody:
         required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - first_name
+                - last_name
+              properties:
+                first_name:
+                  type: string
+                  example: Petar
+                last_name:
+                  type: string
+                  example: Petrovic
       responses:
         "201":
           description: Created
@@ -16,6 +30,42 @@ paths:
   /customers/{id}:
     get:
       summary: Get customer by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+
+  /orders:
+    post:
+      summary: Create order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - item_name
+                - quantity
+              properties:
+                first_name:
+                  type: string
+                  example: Ice Cream
+                last_name:
+                  type: integer
+                  example: 3
+      responses:
+        "201":
+          description: Created
+
+  /orders/{id}:
+    get:
+      summary: Get order by ID
       parameters:
         - name: id
           in: path
