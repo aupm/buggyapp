@@ -4,10 +4,10 @@ class CustomerService
 {
     public function __construct(private readonly JsonStorage $storage) {}
 
-    public function getAll(): array
-    {
-        return $this->storage->all();
-    }
+//    public function getAll(): array
+//    {
+//        return $this->storage->all();
+//    }
 
     public function getById(int $id): ?array
     {
@@ -40,37 +40,37 @@ class CustomerService
         return $newCustomer;
     }
 
-    public function update(int $id, array $data): ?array
-    {
-        $customers = $this->storage->all();
+//    public function update(int $id, array $data): ?array
+//    {
+//        $customers = $this->storage->all();
+//
+//        foreach ($customers as &$customer) {
+//            if ($customer['id'] === $id) {
+//                $customer['first_name'] = $data['first_name'] ?? $customer['first_name'];
+//                $customer['last_name'] = $data['last_name'] ?? $customer['last_name'];
+//
+//                $this->storage->saveAll($customers);
+//                return $customer;
+//            }
+//        }
+//
+//        return null;
+//    }
 
-        foreach ($customers as &$customer) {
-            if ($customer['id'] === $id) {
-                $customer['first_name'] = $data['first_name'] ?? $customer['first_name'];
-                $customer['last_name'] = $data['last_name'] ?? $customer['last_name'];
-
-                $this->storage->saveAll($customers);
-                return $customer;
-            }
-        }
-
-        return null;
-    }
-
-    public function delete(int $id): bool
-    {
-        $customers = $this->storage->all();
-
-        foreach ($customers as $index => $customer) {
-            if ($customer['id'] === $id) {
-                array_splice($customers, $index, 1);
-                $this->storage->saveAll($customers);
-                return true;
-            }
-        }
-
-        return false;
-    }
+//    public function delete(int $id): bool
+//    {
+//        $customers = $this->storage->all();
+//
+//        foreach ($customers as $index => $customer) {
+//            if ($customer['id'] === $id) {
+//                array_splice($customers, $index, 1);
+//                $this->storage->saveAll($customers);
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
 
     private function generateId(array $customers): int
     {

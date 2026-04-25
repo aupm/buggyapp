@@ -10,10 +10,10 @@ class CustomerController
         $this->service = new CustomerService($storage);
     }
 
-    public function index(): void
-    {
-        $this->respond($this->service->getAll());
-    }
+//    public function index(): void
+//    {
+//        $this->respond($this->service->getAll());
+//    }
 
     public function show(int $id): void
     {
@@ -40,31 +40,31 @@ class CustomerController
         $this->respond($task, 201);
     }
 
-    public function update(int $id): void
-    {
-        $input = $this->getJsonInput();
+//    public function update(int $id): void
+//    {
+//        $input = $this->getJsonInput();
+//
+//        $task = $this->service->update($id, $input);
+//
+//        if (!$task) {
+//            $this->error('Customer not found', 404);
+//            return;
+//        }
+//
+//        $this->respond($task);
+//    }
 
-        $task = $this->service->update($id, $input);
-
-        if (!$task) {
-            $this->error('Customer not found', 404);
-            return;
-        }
-
-        $this->respond($task);
-    }
-
-    public function delete(int $id): void
-    {
-        $deleted = $this->service->delete($id);
-
-        if (!$deleted) {
-            $this->error('Customer not found', 404);
-            return;
-        }
-
-        $this->respond(null, 204);
-    }
+//    public function delete(int $id): void
+//    {
+//        $deleted = $this->service->delete($id);
+//
+//        if (!$deleted) {
+//            $this->error('Customer not found', 404);
+//            return;
+//        }
+//
+//        $this->respond(null, 204);
+//    }
 
     private function getJsonInput(): array
     {
