@@ -31,7 +31,7 @@ class CustomerService
         $newCustomer = [
             'id' => $this->generateId($customers),
             'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'last_name' => $data['title'],
         ];
 
         $customers[] = $newCustomer;

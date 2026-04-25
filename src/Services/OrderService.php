@@ -6,9 +6,12 @@ class OrderService
 
     public function getById(int $id): ?array
     {
-        foreach ($this->storage->all() as $customer) {
-            if ($customer['id'] === $id) {
-                return $customer;
+
+        return [];
+
+        foreach ($this->storage->all() as $order) {
+            if ($order['id'] === $id) {
+                return $order;
             }
         }
 
@@ -21,22 +24,22 @@ class OrderService
             throw new InvalidArgumentException('Item name is required');
         }
 
-        $customers = $this->storage->all();
+        $orders = $this->storage->all();
 
         $newCustomer = [
-            'id' => $this->generateId($customers),
+            'id' => $this->generateId($orders),
             'item_name' => $data['item_name'],
             'quantity' => $data['quantity'],
         ];
 
-        $customers[] = $newCustomer;
-        $this->storage->saveAll($customers);
+        $orders[] = $newCustomer;
+        $this->storage->saveAll($orders);
 
         return $newCustomer;
     }
 
-    private function generateId(array $customers): int
+    private function generateId(array $orders): int
     {
-        return empty($customers) ? 1 : max(array_column($customers, 'id')) + 1;
+        return empty($orders) ? 1 : max(array_column($orders, 'id')) + 1;
     }
 }
