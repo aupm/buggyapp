@@ -4,8 +4,9 @@ class OrderController extends AbstractController
 {
     private OrderService $service;
 
-    public function __construct()
+    public function __construct(protected ?string $requestId = null)
     {
+        parent::__construct();
         $storage = new JsonStorage(__DIR__ . '/../../storage/orders.json');
         $this->service = new OrderService($storage);
     }

@@ -4,8 +4,9 @@ class CustomerController extends AbstractController
 {
     private CustomerService $service;
 
-    public function __construct()
+    public function __construct(protected ?string $requestId = null)
     {
+        parent::__construct();
         $storage = new JsonStorage(__DIR__ . '/../../storage/customers.json');
         $this->service = new CustomerService($storage);
     }

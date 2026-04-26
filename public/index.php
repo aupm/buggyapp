@@ -8,6 +8,7 @@ require_once __DIR__ . '/../src/Controllers/OrderController.php';
 require_once __DIR__ . '/../src/Services/OrderService.php';
 require_once __DIR__ . '/../src/Storage/JsonStorage.php';
 require_once __DIR__ . '/../src/Logger.php';
+require_once __DIR__ . '/../src/Middleware/LoggingMiddleware.php';
 
 $logger = new Logger(__DIR__ . '/../logs/app.log');
 
@@ -33,5 +34,11 @@ set_error_handler(function ($severity, $message, $file, $line) use ($logger) {
 
 header('Content-Type: application/json');
 
+$requestId = uniqid();
+
 $router = new Router();
-$router->handle($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+$middleware = new LoggingMiddleware($logger);
+
+$middleware->handle(function () use ($router, $requestId) {
+    $router->handle($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI'], $requestId);
+});

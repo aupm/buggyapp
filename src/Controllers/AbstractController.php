@@ -2,6 +2,7 @@
 
 abstract class AbstractController
 {
+    public function __construct(protected ?string $requestId = null) {}
     protected function getJsonInput(): array
     {
         return json_decode(file_get_contents('php://input'), true) ?? [];
